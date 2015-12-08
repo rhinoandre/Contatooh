@@ -4,18 +4,16 @@
         <meta charset="utf-8">
         <title>Contatooh</title>
     </head>
-    <body ng-controller="ContatosController">
-        <h1>Bem vindo ao Contatooh</h1>
+    <body>
 
-        <button ng-click="incrementa()" type="button" name="button">Novo</button>
-        <p>
-            Contatos cadastrados: {{total}}
-        </p>
+        <div ng-view></div>
 
         <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+        <script type="text/javascript" src="vendor/angular-route/angular-route.min.js"></script>
 
 
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/controllers/contatos.js"></script>
+        <script type="text/javascript" src="js/controllers/contato.js"></script>
     </body>
 </html>

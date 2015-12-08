@@ -1,1 +1,13 @@
-angular.module('contatooh', ['ngRoute']);
+angular.module('contatooh', ['ngRoute'])
+.config(['$routeProvider',
+function($routeProvider){
+    $routeProvider
+    .when('/contatos', {
+        templateUrl: 'partials/contatos.html',
+        controller: 'ContatosController'
+    })
+    .when('/contato/:contatoId', {
+        templateUrl: 'partials/contato.html',
+        controller: 'ContatoController'
+    });
+}]);

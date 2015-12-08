@@ -2,5 +2,5 @@
      var controller = app.controllers.contato;
 
      app.get('/contatos', controller.listContacts);
-     app.get('/contatos/:id', controller.getContacts)
+     app.get('/contatos/:id', controller.getContacts);
  };

@@ -9,5 +9,6 @@ function($routeProvider){
     .when('/contato/:contatoId', {
         templateUrl: 'partials/contato.html',
         controller: 'ContatoController'
-    });
+    }).
+    otherwise({redirectTo: '/contatos'});
 }]);

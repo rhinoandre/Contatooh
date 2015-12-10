@@ -1,14 +1,18 @@
 angular.module('contatooh')
-.controller('ContatosController', ['$scope', '$http',
-function($scope, $http){
+.controller('ContatosController', ['$scope', '$resource',
+function($scope, $resource){
     $scope.contatos = [];
 
-    $http({method: 'GET', url: '/contatos'})
-        .then(function(data){
-            $scope.contatos = data.data;
-            console.log(data);
-        }).catch(function(error){
-            console.log('Não foi possível obter a lista de contatos');
-            console.log(error.statusText);
+    var Contato = $resource('/contatos/:id');
+
+    function buscaContatos() {
+        Contato.query(function(data){
+            console.log(data)
+            $scope.contatos = data;
+        },
+        function(error){
+            console.log(error)
         });
+    };
+    buscaContatos();
 }]);

@@ -1,9 +1,9 @@
 module.exports = function(){
     var controller = {};
     var contatos = [
-        {_id: 1, nome: 'COntato exemplo 1', email: 'conta1@email.com'},
-        {_id: 2, nome: 'COntato exemplo 2', email: 'conta2@email.com'},
-        {_id: 3, nome: 'COntato exemplo 3', email: 'conta3@email.com'}
+        {_id: 1, nome: 'Contato exemplo 1', email: 'conta1@email.com'},
+        {_id: 2, nome: 'Contato exemplo 2', email: 'conta2@email.com'},
+        {_id: 3, nome: 'Contato exemplo 3', email: 'conta3@email.com'}
     ];
     controller.listContacts = function(req, res){
         res.json(contatos);

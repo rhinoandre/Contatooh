@@ -1,6 +1,10 @@
- module.exports = function(app){
-     var controller = app.controllers.contato;
+module.exports = function(app){
+    var controller = app.controllers.contato;
+    app.route('/contacts')
+        .get(controller.listContacts)
+        .post(controller.saveContact);
 
-     app.get('/contatos', controller.listContacts);
-     app.get('/contatos/:id', controller.getContacts);
- };
+    app.route('/contacts/:id')
+        .get(controller.getContacts)
+        .delete(controller.removeContact);
+};

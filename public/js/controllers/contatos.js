@@ -1,18 +1,28 @@
 angular.module('contatooh')
-.controller('ContatosController', ['$scope', '$resource',
+.controller('ContactsController', ['$scope', '$resource',
 function($scope, $resource){
-    $scope.contatos = [];
+    $scope.contacts = [];
+    $scope.message = {text: ''};
 
-    var Contato = $resource('/contatos/:id');
+    var Contact = $resource('/contacts/:id');
 
-    function buscaContatos() {
-        Contato.query(function(data){
-            console.log(data)
-            $scope.contatos = data;
+    function searchContacts() {
+        Contact.query(function(data){
+            $scope.contacts = data;
         },
         function(error){
-            console.log(error)
+            $scope.message.text = 'Não foi possível buscar os contatos';
+            console.error(error);
         });
     };
-    buscaContatos();
+    searchContacts();
+
+    $scope.remove = function(contact){
+        Contact.delete({id: contact._id}).$promise
+            .then(searchContacts)
+            .catch(function(error){
+                $scope.message.text = 'Não foi possível remover o contato';
+                console.error(error)
+            });
+    };
 }]);

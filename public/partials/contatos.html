@@ -1,9 +1,13 @@
+<p ng-show="message.text">
+    {{message.text}}
+</p>
+
 <div class="jumbotron">
     <h1 class="text-center">Bem-vindo ao Contatooh</h1>
 </div>
-<button class="btn btn-primary" ng-click="incrementa()">Novo</button>
+<a class="btn btn-primary" href="#/contato">Novo</a>
 <input ng-model="filtro" type="search" placeholder="Parte do nome" />
-<p>Contatos cadastrados: {{contatos.length}}</p>
+<p>Contatos cadastrados: {{contacts.length}}</p>
 <div class="table-responsive">
     <table class="table table-hover">
         <tr>
@@ -11,13 +15,16 @@
             <th>E-mail</th>
             <th class="text-center">Ação</th>
         </tr>
-        <tr ng-repeat="contato in contatos | filter: filtro">
+        <tr ng-hide="contacts.length">
+            <td colspan="3" class="text-info">Não há contatos cadastrados</td>
+        </tr>
+        <tr ng-repeat="contact in contacts | filter: filtro">
             <td>
-                <a>{{contato.nome}}</a>
+                <a ng-href="#/contato/{{contact._id}}">{{contact.name}}</a>
             </td>
-            <td>{{contato.email}}</td>
+            <td>{{contact.email}}</td>
             <td class="text-center">
-                <button class="btn btn-warning">
+                <button class="btn btn-warning" ng-click="remove(contact)">
                     Remover
                 </button>
             </td>

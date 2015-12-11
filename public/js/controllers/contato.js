@@ -1,11 +1,10 @@
 angular.module('contatooh')
-.controller('ContactController', ['$scope', '$routeParams', '$resource',
-function($scope, $routeParams, $resource){
+.controller('ContactController', ['$scope', '$routeParams', 'ContactService',
+function($scope, $routeParams, ContactService){
     $scope.message = {text: ''};
-    var Contact = $resource('/contacts/:id');
 
     if($routeParams.id) {
-        Contact.get({id: $routeParams.id}).$promise
+        ContactService.get({id: $routeParams.id}).$promise
             .then(function (data) {
                 $scope.contact = data;
             })
@@ -14,14 +13,14 @@ function($scope, $routeParams, $resource){
                 console.error(error);
             });
     } else {
-        $scope.contact = new Contact();
+        $scope.contact = new ContactService();
     }
 
     $scope.save = function(){
         $scope.contact.$save($scope.contact)
             .then(function(data){
                 $scope.message = {text: 'Contato salvo'};
-                $scope.contact = new Contact();
+                $scope.contact = new ContactService();
             })
             .catch(function(error){
                 $scope.message = {text: 'Não foi possível salvar o contato'};

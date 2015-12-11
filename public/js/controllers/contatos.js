@@ -1,13 +1,11 @@
 angular.module('contatooh')
-.controller('ContactsController', ['$scope', '$resource',
-function($scope, $resource){
+.controller('ContactsController', ['$scope', 'ContactService',
+function($scope, ContactService){
     $scope.contacts = [];
     $scope.message = {text: ''};
 
-    var Contact = $resource('/contacts/:id');
-
     function searchContacts() {
-        Contact.query(function(data){
+        ContactService.query(function(data){
             $scope.contacts = data;
         },
         function(error){
@@ -18,7 +16,7 @@ function($scope, $resource){
     searchContacts();
 
     $scope.remove = function(contact){
-        Contact.delete({id: contact._id}).$promise
+        ContactService.delete({id: contact._id}).$promise
             .then(searchContacts)
             .catch(function(error){
                 $scope.message.text = 'Não foi possível remover o contato';

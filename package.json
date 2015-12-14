@@ -1,19 +1,21 @@
 {
-    "name": "contatooh",
-    "version": "1.0.0",
-    "description": "Studying MEAN",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Rhinoandre",
-    "repository": "https://github.com/rhinoandre/Contatooh.git",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.14.1",
-        "ejs": "^2.3.4",
-        "express": "^4.13.3",
-        "express-load": "^1.1.15",
-        "method-override": "^2.3.5"
-    }
+  "name": "contatooh",
+  "version": "1.0.0",
+  "description": "Studying MEAN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rhinoandre",
+  "repository": "https://github.com/rhinoandre/Contatooh.git",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-load": "^1.1.15",
+    "method-override": "^2.3.5",
+    "mongodb": "^2.1.1",
+    "mongoose": "^4.3.1"
+  }
 }

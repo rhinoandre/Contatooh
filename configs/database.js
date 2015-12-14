@@ -14,6 +14,7 @@ module.exports = function(uri){
     });
 
     process.on('SIGINIT', function(){
+        console.log('teste');
         mongoose.connection.close(function(){
             console.log('Mongoose! Disconnected by application ended');
             //0 = Ended occurred without errors

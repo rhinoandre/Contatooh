@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 module.exports = function(uri){
     mongoose.connect(uri);
+    mongoose.set('debug', true);
 
     mongoose.connection.on('connected', function(){
         console.log('Mongoose! Connected at ' + uri);
@@ -14,7 +15,6 @@ module.exports = function(uri){
     });
 
     process.on('SIGINIT', function(){
-        console.log('teste');
         mongoose.connection.close(function(){
             console.log('Mongoose! Disconnected by application ended');
             //0 = Ended occurred without errors

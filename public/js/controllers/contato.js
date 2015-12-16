@@ -20,7 +20,7 @@ function($scope, $routeParams, ContactService){
         $scope.contact.$save($scope.contact)
             .then(function(data){
                 $scope.message = {text: 'Contato salvo'};
-                $scope.contact = new ContactService();
+                $scope.contact = data;
             })
             .catch(function(error){
                 $scope.message = {text: 'Não foi possível salvar o contato'};

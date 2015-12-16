@@ -1,10 +1,10 @@
 module.exports = function(app){
-    var controller = app.controllers.contato;
+    var contactController = app.controllers.contato;
     app.route('/contacts')
-        .get(controller.listContacts)
-        .post(controller.saveContact);
+        .get(contactController.list)
+        .post(contactController.save);
 
     app.route('/contacts/:id')
-        .get(controller.getContacts)
-        .delete(controller.removeContact);
+        .get(contactController.get)
+        .delete(contactController.remove);
 };

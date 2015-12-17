@@ -18,6 +18,11 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label for="emergency">Emergência</label>
+        <select id="emergency" class="form-control" ng-model="contact.emergency" ng-options="contact._id as contact.name for contact in contacts"></select>
+    </div>
+
     <button type="submit" class="btn btn-primary">
         Salvar
     </button>

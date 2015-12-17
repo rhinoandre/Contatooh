@@ -3,7 +3,7 @@ module.exports = function(app){
         Contato = app.models.contato;
 
     controller.list = function(req, res){
-        Contato.find().exec()
+        Contato.find().populate('emergency').exec()
             .then(function(contacts){
                 res.json(contacts);
             },
@@ -41,6 +41,7 @@ module.exports = function(app){
 
     controller.save = function(req, res){
         var _id = req.body._id;
+        req.body.emergency = req.body.emergency || null;
 
         if(_id){
             Contato.findByIdAndUpdate(_id, req.body).exec()

@@ -3,6 +3,10 @@ angular.module('contatooh')
 function($scope, $routeParams, ContactService){
     $scope.message = {text: ''};
 
+    ContactService.query(function(contacts){
+        $scope.contacts = contacts;
+    });
+
     if($routeParams.id) {
         ContactService.get({id: $routeParams.id}).$promise
             .then(function (data) {

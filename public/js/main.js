@@ -1,6 +1,8 @@
 angular.module('contatooh', ['ngRoute', 'ngResource'])
-.config(['$routeProvider',
-function($routeProvider){
+.config(['$routeProvider', '$httpProvider',
+function($routeProvider, $httpProvider){
+    $httpProvider.interceptors.push('Interceptor');
+
     $routeProvider
         .when('/auth', {
             templateUrl: 'partials/auth.html'

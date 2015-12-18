@@ -2,6 +2,9 @@ angular.module('contatooh', ['ngRoute', 'ngResource'])
 .config(['$routeProvider',
 function($routeProvider){
     $routeProvider
+        .when('/auth', {
+            templateUrl: 'partials/auth.html'
+        })
         .when('/contatos', {
             templateUrl: 'partials/contatos.html',
             controller: 'ContactsController'

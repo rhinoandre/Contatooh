@@ -12,10 +12,8 @@ module.exports = function(){
     app.set('port', 3000);
 
     //adding view engine with node managing all parts of website
-    /*
     app.set('view engine', 'ejs');
     app.set('views', './app/views');
-    */
 
     //middleware
     app.use(express.static('./public'));

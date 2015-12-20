@@ -1,3 +1,5 @@
+var sanitize = require('mongo-sanitize');
+
 module.exports = function(app){
     var controller = {},
         Contato = app.models.contato;
@@ -14,7 +16,7 @@ module.exports = function(app){
     };
 
     controller.get = function(req, res){
-        var _id = req.params.id;
+        var _id = sanitize(req.params.id);
 
         Contato.findById(_id).exec()
             .then(function(contact){
@@ -28,7 +30,7 @@ module.exports = function(app){
     };
 
     controller.remove = function(req, res){
-        var _id = req.params.id;
+        var _id = sanitize(req.params.id);
 
         Contato.remove({_id: _id}).exec()
             .then(function(){
@@ -40,11 +42,15 @@ module.exports = function(app){
     };
 
     controller.save = function(req, res){
-        var _id = req.body._id;
-        req.body.emergency = req.body.emergency || null;
+        var _id = sanitize(req.body._id);
+        var contact = {
+            name: req.body.name,
+            email: req.body.email,
+            emergency: req.body.emergency || null
+        }
 
         if(_id){
-            Contato.findByIdAndUpdate(_id, req.body).exec()
+            Contato.findByIdAndUpdate(_id, contact).exec()
                 .then(function(){
                     res.json(req.body);
                 },
@@ -53,7 +59,7 @@ module.exports = function(app){
                     res.status(500).json(error);
                 });
         } else {
-            Contato.create(req.body)
+            Contato.create(contact)
                 .then(function(contact){
                     res.status(201).json(contact);
                 },

@@ -16,6 +16,7 @@
     "express": "^4.13.3",
     "express-load": "^1.1.15",
     "express-session": "^1.12.1",
+    "helmet": "^1.0.0",
     "method-override": "^2.3.5",
     "mongodb": "^2.1.1",
     "mongoose": "^4.3.1",

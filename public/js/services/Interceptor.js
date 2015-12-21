@@ -1,6 +1,5 @@
 angular.module('contatooh')
 .factory('Interceptor',
-['$location', '$q',
 function($location, $q){
     var interceptor = {}
 
@@ -12,4 +11,4 @@ function($location, $q){
     }
 
     return interceptor;
-}]);
+});

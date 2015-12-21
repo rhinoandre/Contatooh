@@ -10,13 +10,39 @@ module.exports = function(grunt){
         },
         clean: {
             dist: {
-                src: 'dist'
+                src: ['dist', '.tmp']
+            },
+            normalFiles: {
+                src: ['dist/public/vendor', 'dist/public/js/controllers', 'dist/public/js/services', 'dist/public/js/main.js']
+            }
+        },
+        usemin: {
+            html: 'dist/app/views/**/*.ejs'
+        },
+        useminPrepare: {
+            options: {
+                root: 'dist/public',
+                dest: 'dist/public'
+            },
+            html: 'dist/app/views/**/*.ejs'
+        },
+        ngAnnotate: {
+            scripts: {
+                expand: true,
+                src: ['dist/public/js/**/*.js']
             }
         }
     });
 
-    grunt.registerTask('default', ['dist']);
-    grunt.registerTask('dist', ['clean', 'copy']);
+    grunt.registerTask('default', ['dist', 'minify', 'clean:normalFiles']);
+    grunt.registerTask('dist', ['clean:dist', 'copy']);
+    grunt.registerTask('minify', ['useminPrepare', 'ngAnnotate', 'concat', 'uglify', 'cssmin', 'usemin']);
+
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-ng-annotate');
 };

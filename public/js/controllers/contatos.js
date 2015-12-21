@@ -1,5 +1,5 @@
 angular.module('contatooh')
-.controller('ContactsController', ['$scope', 'ContactService',
+.controller('ContactsController',
 function($scope, ContactService){
     $scope.contacts = [];
     $scope.message = {text: ''};
@@ -23,4 +23,4 @@ function($scope, ContactService){
                 console.error(error)
             });
     };
-}]);
+});
